@@ -1,10 +1,10 @@
-package br.exaltagame.goodbrowsergame;
+package br.exaltagame.backgame;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GoodbrowsergameApplicationTests {
+class BackgameApplicationTests {
 
 	@Test
 	void contextLoads() {

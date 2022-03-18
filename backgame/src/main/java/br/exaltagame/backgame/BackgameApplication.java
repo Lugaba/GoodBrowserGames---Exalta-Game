@@ -1,13 +1,13 @@
-package br.exaltagame.goodbrowsergame;
+package br.exaltagame.backgame;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GoodbrowsergameApplication {
+public class BackgameApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GoodbrowsergameApplication.class, args);
+		SpringApplication.run(BackgameApplication.class, args);
 	}
 
 }

@@ -1,0 +1,77 @@
+package br.exaltagame.backgame.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.exaltagame.backgame.entity.BrowserGame;
+import br.exaltagame.backgame.repository.BrowserGameRepository;
+
+@RestController
+public class BrowserGameController {
+    @Autowired
+    private BrowserGameRepository repository;
+
+    // GET ALL - retorna todos os alunos
+    @RequestMapping(value = "/browsergames", method = RequestMethod.GET)
+    public List<BrowserGame> getBrowserGames() {
+        return repository.findAll();
+    }
+
+    // POST - criar novo aluno
+    @RequestMapping(value = "/browsergames", method = RequestMethod.POST)
+    public BrowserGame createBrowserGame(@Valid @RequestBody BrowserGame browsergames) { // Request pegue o body da
+                                                                                         // mensagem e coloque no aluno
+                                                                                         // e
+        // Valid valida os dados do body
+        return repository.save(browsergames); // salva no banco
+    }
+
+    @RequestMapping(value = "/browsergames/{id}", method = RequestMethod.GET)
+    public ResponseEntity<BrowserGame> getById(@PathVariable(value = "id") long id) {
+        Optional<BrowserGame> response = repository.findById(id);
+        if (response.isPresent()) {
+            return new ResponseEntity<BrowserGame>(response.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = "/browsergames/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<BrowserGame> Put(@PathVariable(value = "id") long id,
+            @Valid @RequestBody BrowserGame newGame) {
+        Optional<BrowserGame> oldGame = repository.findById(id);
+        if (oldGame.isPresent()) {
+            BrowserGame game = oldGame.get();
+            game.setNome(newGame.getNome());
+            game.setURL(newGame.getURL());
+            game.setDescricao(newGame.getDescricao());
+            game.setImagem(newGame.getImagem());
+            game.setURLVideo(newGame.getURLVideo());
+            repository.save(game);
+            return new ResponseEntity<BrowserGame>(game, HttpStatus.OK);
+        } else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/browsergames/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Object> Delete(@PathVariable(value = "id") long id) {
+        Optional<BrowserGame> game = repository.findById(id);
+        if (game.isPresent()) {
+            repository.delete(game.get());
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+}

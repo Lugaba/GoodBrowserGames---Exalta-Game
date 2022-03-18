@@ -9,13 +9,12 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.exaltagame</groupId>
-	<artifactId>goodbrowsergame</artifactId>
+	<artifactId>backgame</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>goodbrowsergame</name>
+	<name>backgame</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>8</java.version>
-		<start-class>br.exaltagame.goodbrowsergame.GoodbrowsergameApplication</start-class>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -38,10 +37,9 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-			<scope>test</scope>
+		<dependency> 
+			<groupId>org.springframework.boot</groupId> 
+			<artifactId>spring-boot-starter-validation</artifactId> 
 		</dependency>
 	</dependencies>
 
@@ -50,9 +48,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<mainClass>br.exaltagame.goodbrowsergame.GoodbrowsergameApplication</mainClass>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
