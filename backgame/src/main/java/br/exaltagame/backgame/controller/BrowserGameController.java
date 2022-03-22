@@ -30,10 +30,7 @@ public class BrowserGameController {
 
     // POST - criar novo aluno
     @RequestMapping(value = "/browsergames", method = RequestMethod.POST)
-    public BrowserGame createBrowserGame(@Valid @RequestBody BrowserGame browsergames) { // Request pegue o body da
-                                                                                         // mensagem e coloque no aluno
-                                                                                         // e
-        // Valid valida os dados do body
+    public BrowserGame createBrowserGame(@Valid @RequestBody BrowserGame browsergames) {
         return repository.save(browsergames); // salva no banco
     }
 

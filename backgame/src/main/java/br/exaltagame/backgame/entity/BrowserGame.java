@@ -16,9 +16,9 @@ public class BrowserGame {
     private String nome;
 
     @Column(nullable = false)
-    private String URL;
+    private String url;
 
-    private String URLVideo;
+    private String urlvideo;
 
     @Column(nullable = false)
     private String descricao;
@@ -43,19 +43,19 @@ public class BrowserGame {
     }
 
     public String getURL() {
-        return this.URL;
+        return this.url;
     }
 
-    public void setURL(String URL) {
-        this.URL = URL;
+    public void setURL(String url) {
+        this.url = url;
     }
 
     public String getURLVideo() {
-        return this.URLVideo;
+        return this.urlvideo;
     }
 
-    public void setURLVideo(String URLVideo) {
-        this.URLVideo = URLVideo;
+    public void setURLVideo(String urlvideo) {
+        this.urlvideo = urlvideo;
     }
 
     public String getDescricao() {
