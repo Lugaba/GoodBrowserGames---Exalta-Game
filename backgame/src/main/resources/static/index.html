@@ -4,8 +4,10 @@
         <title>ExaltaGame</title>
         <script src="javascript/APIService.js"></script>
         <script src="javascript/indexJS.js"></script>
+        <link rel="stylesheet" href="css/styleIndex.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
+    <body onload="getAllGames()">
         <section>
             <h1>API - ExaltaGame</h1>
             <h3>Luca Hummel, Luca Yuki e Marcelo Coelho</h3>
@@ -16,8 +18,11 @@
                     <li><p>TIME</p></li>
                 </ul>
             </nav>
-            <input type="button" value="Get All" onclick="getAllGames()">
             <article id="resposta"></article>
+            <footer>
+                <p>GoodBrowserGames</p>
+                <p>Avalie browserGames</p>
+            </footer>
         </section>
     </body>
 </html>
