@@ -1,0 +1,111 @@
+/* Variáveis */
+:root{
+    --vermelho: #FF3B30;
+    --azul: #007AFF;
+    --bgColor: #F5F5F5;
+    --cinza: #D4D5DD;
+}
+
+/* Reset */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos básicos */
+body {
+    background-color: var(--bgColor);
+}
+
+nav ul li {
+    cursor: pointer;
+}
+
+/* Mobile */
+section {
+    width: 90%;
+    margin: auto;
+}
+
+section nav {
+    background-color: var(--vermelho);
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 2%;
+}
+
+section nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+section nav ul li {
+    padding: 20px;
+}
+
+section nav ul li a {
+    text-decoration: none;
+}
+
+section nav ul li img {
+    display: none;
+}
+
+section nav ul li p {
+    display: inline;
+    color: white;
+    font-family: titleFont;
+    font-size: 12pt;
+}
+
+section #resposta {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-content: left;
+    justify-content: flex-start;
+    overflow: scroll;
+}
+
+section #resposta .game {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 15px;
+}
+
+section #resposta .game .imagem {
+    width: 250px;
+    height: 300px;
+}
+
+section #resposta .game .imagem img {
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    height: 70px;
+    padding-left: 10px;
+    padding-right: 10px;
+    bottom: 0;
+    background-color: var(--azul);
+    width: 100%;
+}
+
+footer p {
+    font-size: 12pt;
+    color: white;
+    padding: 10px;
+    font-family: titleFont;
+}
