@@ -63,32 +63,71 @@ section nav ul li p {
     font-size: 12pt;
 }
 
-section #resposta {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: row;
-    align-content: left;
-    justify-content: flex-start;
-    overflow: scroll;
+section #mensagem {
+    text-align: center;
 }
 
-section #resposta .game {
+section #mensagem .error_message {
+    color: red;
+}
+
+section #mensagem .good {
+    color: #34C759;
+}
+
+section article {
+    text-align: center;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
-    justify-content: flex-start;
-    margin: 0 15px;
+    align-items: center;
 }
 
-section #resposta .game .imagem {
-    width: 250px;
-    height: 300px;
-}
-
-section #resposta .game .imagem img {
-    border-radius: 20px;
-    height: 100%;
+section article form {
     width: 100%;
-    object-fit: fill;
+    text-align: center;
+}
+
+section article form div .side-by-side {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: blue;
+}
+
+section article form input[type=text] {
+    width: 30%;
+    height: 25px;
+    background-color: var(--cinza);
+    padding: 10px;
+    border: 0 none;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+section article form #descricao {
+    height: 100px;
+    width: 61%;
+}
+
+section article form #imagem {
+    width: 61%;
+}
+
+
+section article form input[type=button] {
+    width: 10%;
+    color: white;
+    background-color: var(--azul);
+    border-radius: 50px;
+    text-align: center;
+    border: 0 none;
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 footer {
