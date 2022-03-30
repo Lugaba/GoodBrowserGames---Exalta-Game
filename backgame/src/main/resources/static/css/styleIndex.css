@@ -6,6 +6,12 @@
     --cinza: #D4D5DD;
 }
 
+/* Fontes */
+@font-face {
+    font-family: 'projectFont';
+    src: url(../fonts/Aldrich-Regular.ttf);
+}
+
 /* Reset */
 html, body {
     margin: 0;
@@ -15,6 +21,10 @@ html, body {
 /* Estilos básicos */
 body {
     background-color: var(--bgColor);
+}
+
+* {
+    font-family: projectFont;
 }
 
 nav ul li {

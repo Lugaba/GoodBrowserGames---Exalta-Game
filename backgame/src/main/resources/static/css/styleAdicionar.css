@@ -1,9 +1,16 @@
 /* Variáveis */
 :root{
     --lilas: #D475B3;
-    --azul: #007AFF;
+    --azul: #3DC3B6;
+    --azulEscuro: #1B2D51;
     --bgColor: #F5F5F5;
     --cinza: #D4D5DD;
+}
+
+/* Fontes */
+@font-face {
+    font-family: 'projectFont';
+    src: url(../fonts/Aldrich-Regular.ttf);
 }
 
 /* Reset */
@@ -15,6 +22,10 @@ html, body {
 /* Estilos básicos */
 body {
     background-color: var(--bgColor);
+}
+
+* {
+    font-family: projectFont;
 }
 
 nav ul li {
@@ -78,9 +89,13 @@ section #mensagem .good {
 section article {
     text-align: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0px 10px 5px lightgray;
+    margin: 48px;
+    border-radius: 15px;
+    height: 75%;
 }
 
 section article form {
@@ -93,34 +108,52 @@ section article form div .side-by-side {
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    background-color: blue;
+
 }
 
 section article form input[type=text] {
     width: 30%;
-    height: 25px;
-    background-color: var(--cinza);
+    height: 15%;
+    background-color: var(--bgColor);
     padding: 10px;
     border: 0 none;
     outline: none;
     margin-bottom: 10px;
+    border: var(--azulEscuro) solid 3px;
+}
+
+section article form #categoria {
+    background-color: var(--bgColor);
+    height: 15%;
+    padding: 10px;
+    border: 0 none;
+    outline: none;
+    margin-bottom: 10px;
+    border: var(--azulEscuro) solid 3px;
 }
 
 section article form #descricao {
     height: 100px;
-    width: 61%;
+    width: 60.5%;
+    background-color: var(--bgColor);
+    padding: 10px;
+    border: 0 none;
+    outline: none;
+    margin-bottom: 10px;
+    border: var(--azulEscuro) solid 3px;
 }
 
 section article form #imagem {
-    width: 61%;
+    width: 60.5%;
 }
 
 
 section article form input[type=button] {
-    width: 10%;
-    color: white;
+    width: 15%;
+    height: 15%;
+    color: var(--azulEscuro);
     background-color: var(--azul);
-    border-radius: 50px;
+    border-radius: 10px;
     text-align: center;
     border: 0 none;
     padding: 10px;
@@ -128,6 +161,10 @@ section article form input[type=button] {
     cursor: pointer;
     margin-top: 20px;
     margin-bottom: 10px;
+}
+
+section article form #cancelButton {
+    background-color: var(--lilas);
 }
 
 footer {

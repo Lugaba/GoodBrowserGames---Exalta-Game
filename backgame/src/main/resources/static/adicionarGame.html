@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="css/styleAdicionar.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
+    <body onload="getCategorias()">
         <section>
             <nav>
                 <ul>
@@ -20,16 +20,17 @@
                 <form>
                     <div class="side-by-side">
                         <input type="text" id="nome" name="nome" placeholder="Nome" required>
-                        <input type="text" id="categoria" name="categoria" placeholder="Categoria" required>
+                        <select type="text" id="categoria" name="categoria" style="width:30%;" required></select>
                     </div>
                     <div class="side-by-side">
                         <input type="text" id="url" name="url" placeholder="URL" required>
                         <input type="text" id="urlvideo" name="urlvideo" placeholder="URL Vídeo">
                     </div>
-                    <input type="text" id="descricao" name="descricao" placeholder="Descrição" required></br>
+                    <textarea id="descricao" name="descricao" rows="5" cols="50" placeholder="Descrição" required></textarea>
+                    </br>
                     <input type="text" id="imagem" name="imagem" placeholder="URL Imagem" required>
                     <div class="side-by-side">
-                        <input type="button" value="Cancelar" onclick="location.href = 'index.html';">
+                        <input type="button" id="cancelButton" value="Cancelar" onclick="location.href = 'index.html';">
                         <input type="button" value="Cadastrar" onclick="addGame()">
                     </div>
                 </form>

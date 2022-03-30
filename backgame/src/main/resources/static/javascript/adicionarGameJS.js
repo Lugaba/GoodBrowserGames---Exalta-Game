@@ -1,9 +1,8 @@
-const apiService = new APIService("/browsergames");
+const apiService = new APIService();
 
 //Função que adiciona um novo funko na coleção da loja
 function addGame() {
     // Ler campos do formulário
-    // categoria: document.getElementById('categoria').value.trim(),
     console.log(document.getElementById('nome').value);
     if ((document.getElementById('nome').value != "") &&
      (document.getElementById('url').value != '') &&
@@ -17,7 +16,8 @@ function addGame() {
             imagem: document.getElementById('imagem').value.trim(),
         }
 
-        apiService.create("", browserGame, function (status, dados) {
+        var categoria = document.getElementById('categoria').value
+        apiService.create("/categoria/" + categoria + "/browsergames", browserGame, function (status, dados) {
             if (status < 200 || status > 299) {
                 document.getElementById("mensagem").innerHTML = "<p class='error_message'>Erro ao adicionar um novo funko: " + status + " - " + dados.message + "</p>";
                 return;
@@ -34,4 +34,23 @@ function addGame() {
     } else {
         document.getElementById("mensagem").innerHTML = "<p class='error_message'>Erro ao cadastrar browserGame - campos em branco</p>";
     }
+}
+
+function getCategorias() {
+    var select = document.getElementById('categoria');
+
+    apiService.getAll("/categorias", function(status, response){
+        if(status < 200 || status > 299 ) {
+            document.getElementById("resposta").innerHTML += "<p class='error_message'>Erro ao carregar os dados: " + status + " - " + response.message + "</p>";
+            return;
+        }
+
+        for (var i = 0; i<response.length; i++){
+            var opt = document.createElement('option');
+            opt.value = response[i].id;
+            opt.innerHTML = response[i].nome;
+            select.appendChild(opt);
+        }
+
+    });
 }

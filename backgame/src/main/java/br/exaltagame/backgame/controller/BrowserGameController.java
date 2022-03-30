@@ -14,24 +14,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.exaltagame.backgame.entity.Categoria;
 import br.exaltagame.backgame.entity.BrowserGame;
 import br.exaltagame.backgame.repository.BrowserGameRepository;
+import br.exaltagame.backgame.repository.CategoriaRepository;
 
 @RestController
 public class BrowserGameController {
     @Autowired
     private BrowserGameRepository repository;
 
-    // GET ALL - retorna todos os alunos
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+
     @RequestMapping(value = "/browsergames", method = RequestMethod.GET)
     public List<BrowserGame> getBrowserGames() {
         return repository.findAll();
     }
 
-    // POST - criar novo aluno
-    @RequestMapping(value = "/browsergames", method = RequestMethod.POST)
-    public BrowserGame createBrowserGame(@Valid @RequestBody BrowserGame browsergames) {
-        return repository.save(browsergames); // salva no banco
+    @RequestMapping(value = "categoria/{idCategoria}/browsergames", method = RequestMethod.POST)
+    public ResponseEntity<BrowserGame> createBrowserGame(@Valid @RequestBody BrowserGame browserGame,
+            @PathVariable(value = "idCategoria") Long idCategoria) {
+        Optional<Categoria> responseCategoria = categoriaRepository.findById(idCategoria);
+        if (responseCategoria.isPresent()) {
+            browserGame.setCategoria(responseCategoria.get());
+            repository.save(browserGame); // salva no banco
+            return new ResponseEntity<BrowserGame>(browserGame, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @RequestMapping(value = "/browsergames/{id}", method = RequestMethod.GET)

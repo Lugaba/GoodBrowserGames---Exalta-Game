@@ -2,9 +2,14 @@ package br.exaltagame.backgame.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class BrowserGame {
@@ -25,6 +30,11 @@ public class BrowserGame {
 
     @Column(nullable = false)
     private String imagem;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private Categoria categoria;
 
     public long getId() {
         return this.id;
@@ -72,5 +82,13 @@ public class BrowserGame {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public Categoria getCategoria() {
+        return this.categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
