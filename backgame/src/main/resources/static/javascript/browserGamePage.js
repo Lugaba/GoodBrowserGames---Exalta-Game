@@ -1,0 +1,55 @@
+var save = sessionStorage.getItem("save");
+var categoria = sessionStorage.getItem("categoria1");
+const apiService = new APIService();
+
+console.log(save)
+console.log(categoria)
+function getBrowserGame(){
+    apiService.getById("/browsergames", save, function(status, response) {
+        if(status < 200 || status > 299 ) {
+            document.getElementById("mensagem").innerHTML += "<p class='error_message'>Erro ao carregar os dados: " + status + " - " + json.message + "</p>";
+            return;
+        }
+
+        var img = response.imagem;
+        var nome = response.nome;
+        var descricao = response.descricao;
+        var url = response.url;
+        var urlvideo = response.urlvideo
+        console.log(response.categoria)
+        document.getElementById("resposta").innerHTML = 
+            `<div id='browserGame'>
+                <div id='imagem'>
+                    <img src='${img}'>
+                </div>
+                <div id='informacao'>
+                    <h1 id='nome'>${nome}</h1>
+                    <h3 id='categoria'>${categoria}</h3>
+                    <p id='descricao'>${descricao}</p>
+                    <div id='botoes'>
+                        <a href="${url}" target="_blank"><input type='button' value='Jogar'></a>
+                        <a href="${urlvideo}" target="_blank"><input type='button' value='Vídeo'></a>
+                        <input type='button' value='Atualizar'  onclick='goToUpdate()'>
+                        <input type='button' value='Deletar' onclick='deleteGame(${save})'>
+                    </div>
+                </div>
+            </div>`;
+    });
+};
+
+function goToUpdate() {
+    window.location = "updateGame.html";
+}
+
+function deleteGame(id) {
+    if(confirm("Deseja apagar esse browserGame do sistema?")) {
+        apiService.deleteData("/browsergames", id, function(status, dados) {
+            if(status < 200 || status > 299 ) {
+                document.getElementById("mensagem").innerHTML += "<p class='error_message'>Erro ao apagar os dados: " + status + " - " + dados.message + "</p>";
+                return
+            }
+            
+            window.location = "index.html";
+        });
+    }
+};

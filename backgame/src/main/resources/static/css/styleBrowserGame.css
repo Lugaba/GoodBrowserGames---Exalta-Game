@@ -74,61 +74,66 @@ section nav ul li p {
     font-size: 12pt;
 }
 
-section #resposta {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-content: left;
-    justify-content: space-evenly;
-    overflow: scroll;
-}
-
-
-section #resposta .categoria .titulo {
-    margin: 0 15px;
-}
-
-section #resposta .categoria .browserGames {
+section #resposta #browserGame {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    margin: 24px;
 }
 
-section #resposta .categoria .browserGames a {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    text-decoration: none;
-}
-
-section #resposta .categoria .browserGames .browserGame {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin: 0 15px;
-}
-
-section #resposta .categoria .browserGames .browserGame .imagem {
-    width: 250px;
+section #resposta #browserGame #imagem {
+    width: 300px;
     height: 300px;
+    margin: 16px;
 }
 
-section #resposta .categoria .browserGames .browserGame .imagem img {
+section #resposta #browserGame #imagem img {
     border-radius: 20px;
     height: 100%;
     width: 100%;
     object-fit: fill;
 }
 
-section #resposta .categoria .browserGames .browserGame #nome {
-    color: var(--azulEscuro);
-    margin-bottom: 0px;
-    font-size: large;
+section #resposta #browserGame #informacao {
+    margin: 16px;
+    width: 50%;
 }
 
-section #resposta .categoria .browserGames .browserGame #categoria {
-    color: var(--lilas);
-    margin-top: 4px;
+section #resposta #browserGame #informacao #nome {
+    margin-bottom: 0px;
+}
+
+section #resposta #browserGame #informacao #categoria {
+    margin-top: 0px;
+}
+
+section #resposta #browserGame #informacao #descricao {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+section #resposta #browserGame #informacao #botoes {
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+section #resposta #browserGame #informacao #botoes input[type=button] {
+    height: 100%;
+    color: var(--azulEscuro);
+    background-color: var(--azul);
+    border-radius: 10px;
+    text-align: center;
+    border: 0 none;
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+    margin: 0px 8px;
+}
+
+section #resposta #browserGame #informacao #botoes input[type=button] a {
+    text-decoration: none;
 }
 
 footer {

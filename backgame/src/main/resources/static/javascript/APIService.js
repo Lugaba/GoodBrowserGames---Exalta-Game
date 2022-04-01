@@ -3,18 +3,20 @@ class APIService {
 
     }
 
-    //Função que retorna o resultado da requisição
-    logMessage(method, statusCode, data) {
-        if (statusCode < 200 || statusCode > 299) {
-            console.error("[" + method + "] retornou código " + statusCode, data);
-        } else {
-            console.log("[" + method + "] retornou código " + statusCode);
-        }
-    }
-
     getAll(url, callBack) {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function() {
+            callBack(xhr.status, xhr.response);
+        };
+        xhr.send();
+    }
+
+    getById(url, id, callBack) {
+        var finalURL = url + "/" + id
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', finalURL, true);
         xhr.responseType = 'json';
         xhr.onreadystatechange = function() {
             callBack(xhr.status, xhr.response);
@@ -31,7 +33,6 @@ class APIService {
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhr.responseType = 'json';
         xhr.onload = function () {
-            logMessage('create', xhr.status, xhr.response);
             callback(xhr.status, xhr.response);
         }
         xhr.send(dados);
@@ -45,9 +46,24 @@ class APIService {
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhr.responseType = 'json';
         xhr.onload = function () {
-            logMessage('delete', xhr.status, xhr.response);
             callback(xhr.status, xhr.response);
         }
         xhr.send();
+    }
+
+    updateData(url, id, data, callback) {
+        var finalURL = url + "/" + id
+        console.log(finalURL)
+        var xhr = new XMLHttpRequest();
+        
+        var dados = JSON.stringify(data);
+        
+        xhr.open('PUT', finalURL, true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.responseType = 'json';
+        xhr.onload = function () {
+            callback(xhr.status, xhr.response);
+        }
+        xhr.send(dados);
     }
 }

@@ -17,6 +17,8 @@ function addGame() {
         }
 
         var categoria = document.getElementById('categoria').value
+        console.log(categoria)
+        console.log(browserGame)
         apiService.create("/categoria/" + categoria + "/browsergames", browserGame, function (status, dados) {
             if (status < 200 || status > 299) {
                 document.getElementById("mensagem").innerHTML = "<p class='error_message'>Erro ao adicionar um novo funko: " + status + " - " + dados.message + "</p>";

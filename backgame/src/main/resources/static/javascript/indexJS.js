@@ -1,40 +1,43 @@
 const apiService = new APIService();
 
 function getAllGames(){
-    apiService.getAll("/browsergames", function(status, response){
+    apiService.getAll("/categorias", function(status, response){
         if(status < 200 || status > 299 ) {
             document.getElementById("resposta").innerHTML += "<p class='error_message'>Erro ao carregar os dados: " + status + " - " + response.message + "</p>";
             return;
         }
-        let html = '';
 
+        
         for(var i=0; i<response.length; i++){
-            let browserGame = response[i];
-            html += `
-            <a href="browserGame.index">
-                <div class="game">
-                    <div class='imagem'><img src="${browserGame.imagem}"/></div>
-                    <p><b>Nome: </b>${browserGame.nome}</p>
-                    <p><b>Link: </b><a href="${browserGame.url}" target="_blank">Clique</a></p>
-                    <p><b>LinkVideo: </b><a href="${browserGame.urlvideo}" target="_blank">Clique</a></p>
-                    <p><b>Descricao: </b>${browserGame.descricao}</p>
-                    <input type="button" value="Excluir" onclick="deleteGame(${browserGame.id})">
-                </div>
-            </a>`;
+            var categoria = response[i]
+            if (categoria.browserGames.length == 0) {
+                continue
+            }
+            var html = "<div class='categoria'><div class='titulo'><h2>" + categoria.nome + "</h2></div><div class='browserGames'>" ;
+            for(var j=0; j<categoria.browserGames.length; j++) {
+                let browserGame = categoria.browserGames[j];
+                html += `
+                <a href="browserGame.html" onclick= "saveGame(${browserGame.id}); saveCategoria(${categoria.nome})">
+                    <div class='browserGame'>
+                            <div class='imagem'><img src="${browserGame.imagem}"/></div>
+                            <p id='nome'>${browserGame.nome}</p>
+                            <p id='categoria'>${categoria.nome}</p>
+                    </div>
+                </a>`;
+            }
+            html += "</div></div>";
+            document.getElementById('resposta').innerHTML += html;
+
+            
         }
-        document.getElementById('resposta').innerHTML = html;
+        console.log(document.getElementById('resposta').innerHTML)
     });
 };
 
-function deleteGame(id) {
-    if(confirm("Deseja apagar esse browserGame do sistema?")) {
-        apiService.deleteData("/browsergames", id, function(status, dados) {
-            if(status < 200 || status > 299 ) {
-                document.getElementById("mensagem").innerHTML += "<p class='error_message'>Erro ao apagar os dados: " + status + " - " + dados.message + "</p>";
-                return
-            }
-            
-            document.location.reload()
-        });
-    }
-};
+function saveGame(id){
+    sessionStorage.setItem("save", id);
+}
+
+function saveCategoria(nome) {
+    sessionStorage.setItem("categoria1", nome);
+}
