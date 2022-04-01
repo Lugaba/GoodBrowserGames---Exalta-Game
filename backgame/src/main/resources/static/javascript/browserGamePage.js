@@ -1,22 +1,21 @@
 var save = sessionStorage.getItem("save");
-var categoria = sessionStorage.getItem("categoria1");
+var categoriaId = sessionStorage.getItem("categoria1");
 const apiService = new APIService();
 
 console.log(save)
-console.log(categoria)
+console.log(categoriaId)
 function getBrowserGame(){
     apiService.getById("/browsergames", save, function(status, response) {
         if(status < 200 || status > 299 ) {
             document.getElementById("mensagem").innerHTML += "<p class='error_message'>Erro ao carregar os dados: " + status + " - " + json.message + "</p>";
             return;
         }
-
+        
         var img = response.imagem;
         var nome = response.nome;
         var descricao = response.descricao;
         var url = response.url;
         var urlvideo = response.urlvideo
-        console.log(response.categoria)
         document.getElementById("resposta").innerHTML = 
             `<div id='browserGame'>
                 <div id='imagem'>
@@ -24,7 +23,7 @@ function getBrowserGame(){
                 </div>
                 <div id='informacao'>
                     <h1 id='nome'>${nome}</h1>
-                    <h3 id='categoria'>${categoria}</h3>
+                    <h3 id='categoria'>categoria</h3>
                     <p id='descricao'>${descricao}</p>
                     <div id='botoes'>
                         <a href="${url}" target="_blank"><input type='button' value='Jogar'></a>
@@ -34,6 +33,18 @@ function getBrowserGame(){
                     </div>
                 </div>
             </div>`;
+        getNameCategoria(categoriaId);  
+    });
+};
+
+function getNameCategoria(id) {
+    apiService.getById("/categorias", id, function(status, response) {
+        if(status < 200 || status > 299 ) {
+            document.getElementById("mensagem").innerHTML += "<p class='error_message'>Erro ao carregar os dados: " + status + " - " + json.message + "</p>";
+            return;
+        }
+        categoriaNome = response.nome;
+        document.getElementById("categoria").innerHTML = categoriaNome
     });
 };
 

@@ -17,7 +17,7 @@ function getAllGames(){
             for(var j=0; j<categoria.browserGames.length; j++) {
                 let browserGame = categoria.browserGames[j];
                 html += `
-                <a href="browserGame.html" onclick= "saveGame(${browserGame.id}); saveCategoria(${categoria.nome})">
+                <a href="browserGame.html" onclick= "saveGame(${browserGame.id}); saveCategoria(${categoria.id})">
                     <div class='browserGame'>
                             <div class='imagem'><img src="${browserGame.imagem}"/></div>
                             <p id='nome'>${browserGame.nome}</p>
@@ -38,6 +38,6 @@ function saveGame(id){
     sessionStorage.setItem("save", id);
 }
 
-function saveCategoria(nome) {
-    sessionStorage.setItem("categoria1", nome);
+function saveCategoria(id) {
+    sessionStorage.setItem("categoria1", id);
 }

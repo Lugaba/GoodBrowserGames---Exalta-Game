@@ -44,7 +44,6 @@ section nav {
     padding-right: 10px;
     width: 100%;
     margin: 0;
-    margin-bottom: 2%;
 }
 
 section nav ul {
@@ -74,10 +73,19 @@ section nav ul li p {
     font-size: 12pt;
 }
 
+section #resposta{
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    justify-items: center;
+}
+
 section #resposta #browserGame {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
     margin: 24px;
 }
 
@@ -92,6 +100,7 @@ section #resposta #browserGame #imagem img {
     height: 100%;
     width: 100%;
     object-fit: fill;
+    
 }
 
 section #resposta #browserGame #informacao {
@@ -101,10 +110,12 @@ section #resposta #browserGame #informacao {
 
 section #resposta #browserGame #informacao #nome {
     margin-bottom: 0px;
+    font-size: x-large;
 }
 
 section #resposta #browserGame #informacao #categoria {
     margin-top: 0px;
+    color: var(--lilas);
 }
 
 section #resposta #browserGame #informacao #descricao {
