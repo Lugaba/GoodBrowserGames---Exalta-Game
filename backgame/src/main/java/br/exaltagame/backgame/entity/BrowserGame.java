@@ -42,6 +42,10 @@ public class BrowserGame {
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
 
+    public BrowserGame() {
+
+    }
+
     public long getId() {
         return this.id;
     }
