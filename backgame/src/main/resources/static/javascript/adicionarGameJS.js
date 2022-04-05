@@ -1,6 +1,6 @@
 const apiService = new APIService();
 
-//Função que adiciona um novo funko na coleção da loja
+//Função que adiciona um novo jogo à biblioteca
 function addGame() {
     // Ler campos do formulário
     console.log(document.getElementById('nome').value);
@@ -21,7 +21,7 @@ function addGame() {
         console.log(browserGame)
         apiService.create("/categoria/" + categoria + "/browsergames", browserGame, function (status, dados) {
             if (status < 200 || status > 299) {
-                document.getElementById("mensagem").innerHTML = "<p class='error_message'>Erro ao adicionar um novo funko: " + status + " - " + dados.message + "</p>";
+                document.getElementById("mensagem").innerHTML = "<p class='error_message'>Erro ao adicionar um novo jogo: " + status + " - " + dados.message + "</p>";
                 return;
             }
 
