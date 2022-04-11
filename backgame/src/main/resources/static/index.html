@@ -7,15 +7,24 @@
         <link rel="stylesheet" href="css/styleIndex.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body onload="getAllGames()">
+    <body>
         <section>
             <nav>
                 <ul>
                     <a href="index.html"><img src="https://i.imgur.com/oq1xrba.png" alt="logo" style="width:135px;height:50x;"></a>
-                    <li><a href="adicionarGame.html"><p>Adicionar</p></a></li>
                 </ul>
             </nav>
-            <article id="resposta"></article>
+            <article>
+                <h2>Entrar</h2>
+                <form>
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                    <input type="password" id="senha" name="senha" placeholder="Senha">
+                    <div class="side-by-side">
+                        <input type="button" id="cadastrarButton" value="Cadastrar">
+                        <input type="button" value="Logar" onclick="addGame()">
+                    </div>
+                </form>
+            </article>
             <footer>
                 <p>GoodBrowserGames</p>
                 <p>Avalie browserGames</p>
