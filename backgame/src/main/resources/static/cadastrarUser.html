@@ -3,33 +3,34 @@
         <meta charset="utf-8"/>
         <title>ExaltaGame</title>
         <script src="javascript/APIService.js"></script>
-        <script src="javascript/adicionarGameJS.js"></script>
-        <link rel="stylesheet" href="css/styleAdicionar.css"/>
+        <script src="javascript/cadastrarUserJS.js"></script>
+        <link rel="stylesheet" href="css/styleCadastrarUser.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body onload="getCategorias()">
+    <body>
         <section>
             <nav>
                 <ul>
                     <a href="index.html"><img src="https://i.imgur.com/oq1xrba.png" alt="logo" style="width:135px;height:50x;"></a>
-                    <li><a href="allGames.html"><p>Voltar</p></a></li>
+                    <li><a href="index.html"><p>Voltar</p></a></li>
                 </ul>
             </nav>
             <div id="mensagem"></div>
             <article>
-                <h2>Cadastrar browserGame</h2>
+                <h2>Cadastrar Usuário</h2>
                 <form>
                     <div class="side-by-side">
-                        <input type="text" id="nome" name="nome" placeholder="Nome" required>
-                        <select type="text" id="categoria" name="categoria" style="width:30%;" required></select>
+                        <input type="text" id="nomeCompleto" name="nomeCompleto" placeholder="Nome Completo" required>
+                        <label>Nascimento: <input type="date" id="start" name="trip-start" value="2018-07-22"></label>
                     </div>
                     <div class="side-by-side">
-                        <input type="text" id="url" name="url" placeholder="URL" required>
-                        <input type="text" id="urlvideo" name="urlvideo" placeholder="URL Vídeo">
+                        <input type="text" id="username" name="username" placeholder="Username" required>
+                        <input type="password" id="senha" name="senha" placeholder="Senha">
                     </div>
-                    <textarea id="descricao" name="descricao" rows="5" cols="50" maxlength="400" placeholder="Descrição" required></textarea>
-                    </br>
-                    <input type="text" id="imagem" name="imagem" placeholder="URL Imagem" required>
+                    <div class="side-by-side">
+                        <input type="text" id="estado" name="estado" placeholder="Estado" required>
+                        <input type="text" id="pais" name="pais" placeholder="País">
+                    </div>
                     <div class="side-by-side">
                         <input type="button" id="cancelButton" value="Cancelar" onclick="location.href = 'allGames.html';">
                         <input type="button" value="Cadastrar" onclick="addGame()">

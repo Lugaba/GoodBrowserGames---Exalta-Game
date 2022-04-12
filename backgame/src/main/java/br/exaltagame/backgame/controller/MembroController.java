@@ -43,6 +43,32 @@ public class MembroController {
         }
     }
 
+    @RequestMapping(value = "/membros/{username}/{password}", method = RequestMethod.GET)
+    public ResponseEntity<Membro> getByUsername(@PathVariable(value = "username") String username,
+            @PathVariable(value = "password") String password) {
+        Optional<Membro> response = repository.findByUsername(username);
+        if (response.isPresent()) {
+            if (response.get().getSenha().equals(password)) {
+                return new ResponseEntity<Membro>(response.get(), HttpStatus.ACCEPTED);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = "/membros", method = RequestMethod.POST)
+    public ResponseEntity<Membro> createMembro(@Valid @RequestBody Membro membro) {
+        Optional<Membro> response = repository.findByUsername(membro.getUsername());
+        if (response.isPresent()) {
+            return new ResponseEntity<Membro>(HttpStatus.CONFLICT);
+        } else {
+            repository.save(membro); // salva no banco
+            return new ResponseEntity<Membro>(membro, HttpStatus.CREATED);
+        }
+    }
+
     @RequestMapping(value = "/membros/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Membro> Put(@PathVariable(value = "id") long id,
             @Valid @RequestBody Membro newMembro) {
