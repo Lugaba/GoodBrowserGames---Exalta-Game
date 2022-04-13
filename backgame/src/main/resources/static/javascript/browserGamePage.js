@@ -60,7 +60,7 @@ function deleteGame(id) {
                 return
             }
             
-            window.location = "index.html";
+            window.location = "allGames.html";
         });
     }
 };

@@ -3,11 +3,11 @@ const apiService = new APIService();
 //Função que adiciona um novo jogo à biblioteca
 function addGame() {
     // Ler campos do formulário
-    console.log(document.getElementById('nome').value);
-    if ((document.getElementById('nome').value != "") &&
-     (document.getElementById('url').value != '') &&
-      (document.getElementById('descricao').value != '') &&
-     (document.getElementById('imagem').value != '')){
+    console.log(document.getElementById('nome').value.trim());
+    if ((document.getElementById('nome').value.trim() != "") &&
+     (document.getElementById('url').value.trim() != '') &&
+      (document.getElementById('descricao').value.trim() != '') &&
+     (document.getElementById('imagem').value.trim() != '')){
         var browserGame = {
             nome: document.getElementById('nome').value.trim(),
             url: document.getElementById('url').value.trim(),

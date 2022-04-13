@@ -23,5 +23,5 @@ function logUserIn() {
 }
 
 function saveUser(id){
-    sessionStorage.setItem("saveUser", id);
+    sessionStorage.setItem("user", id);
 }

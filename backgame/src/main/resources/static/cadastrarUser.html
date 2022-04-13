@@ -19,21 +19,20 @@
             <article>
                 <h2>Cadastrar Usuário</h2>
                 <form>
+                    <input class="field" type="text" id="nomeCompleto" name="nomeCompleto" placeholder="Nome Completo" required>
+                    <br>
+                    <label>Nascimento: <input type="date" id="dataNascimento" name="dataNascimento" value="2018-07-22"></label>
                     <div class="side-by-side">
-                        <input type="text" id="nomeCompleto" name="nomeCompleto" placeholder="Nome Completo" required>
-                        <label>Nascimento: <input type="date" id="start" name="trip-start" value="2018-07-22"></label>
+                        <input class="field" type="text" id="username" name="username" placeholder="Username" required>
+                        <input class="field" type="password" id="senha" name="senha" placeholder="Senha">
                     </div>
                     <div class="side-by-side">
-                        <input type="text" id="username" name="username" placeholder="Username" required>
-                        <input type="password" id="senha" name="senha" placeholder="Senha">
+                        <input class="field" type="text" id="estado" name="estado" placeholder="Estado" required>
+                        <input class="field" type="text" id="pais" name="pais" placeholder="País">
                     </div>
                     <div class="side-by-side">
-                        <input type="text" id="estado" name="estado" placeholder="Estado" required>
-                        <input type="text" id="pais" name="pais" placeholder="País">
-                    </div>
-                    <div class="side-by-side">
-                        <input type="button" id="cancelButton" value="Cancelar" onclick="location.href = 'allGames.html';">
-                        <input type="button" value="Cadastrar" onclick="addGame()">
+                        <input type="button" id="cancelButton" value="Cancelar" onclick="location.href = 'index.html';">
+                        <input type="button" value="Cadastrar" onclick="addMembro()">
                     </div>
                 </form>
             </article>
