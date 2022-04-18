@@ -2,8 +2,6 @@ var save = sessionStorage.getItem("save");
 var categoriaId = sessionStorage.getItem("categoria1");
 const apiService = new APIService();
 
-console.log(save)
-console.log(categoriaId)
 function getBrowserGame(){
     apiService.getById("/browsergames", save, function(status, response) {
         if(status < 200 || status > 299 ) {
