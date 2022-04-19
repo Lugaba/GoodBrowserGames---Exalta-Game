@@ -1,5 +1,8 @@
 package br.exaltagame.backgame.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -32,6 +36,10 @@ public class Avaliacao {
 
     @Column(nullable = false)
     private String data;
+
+    @OneToMany(mappedBy = "avaliacao", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<MembroGameAvaliacao> membroGameAvaliacao;
 
     public Avaliacao() {
 
@@ -75,5 +83,9 @@ public class Avaliacao {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public Set<MembroGameAvaliacao> getMembroGameAvaliacao() {
+        return membroGameAvaliacao;
     }
 }

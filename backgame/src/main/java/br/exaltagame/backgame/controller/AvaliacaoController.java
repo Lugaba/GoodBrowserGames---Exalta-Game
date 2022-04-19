@@ -41,6 +41,11 @@ public class AvaliacaoController {
         }
     }
 
+    @RequestMapping(value = "/avaliacoes", method = RequestMethod.POST)
+    public Avaliacao createAvaliacao(@Valid @RequestBody Avaliacao avaliacao) {
+        return repository.save(avaliacao); // salva no banco
+    }
+
     @RequestMapping(value = "/avaliacoes/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Avaliacao> Put(@PathVariable(value = "id") long id,
             @Valid @RequestBody Avaliacao newAvaliacao) {

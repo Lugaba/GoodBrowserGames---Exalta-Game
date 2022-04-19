@@ -1,5 +1,8 @@
 package br.exaltagame.backgame.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -39,6 +43,9 @@ public class BrowserGame {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
+
+    @OneToMany(mappedBy = "browserGame", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<MembroGameAvaliacao> membroGameAvaliacao;
 
     public BrowserGame() {
 
@@ -98,5 +105,9 @@ public class BrowserGame {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public Set<MembroGameAvaliacao> getMembroGameAvaliacao() {
+        return membroGameAvaliacao;
     }
 }
