@@ -44,13 +44,14 @@ section nav {
     padding-right: 10px;
     width: 100%;
     margin: 0;
+    margin-bottom: 2%;
 }
 
 section nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -73,66 +74,73 @@ section nav ul li p {
     font-size: 12pt;
 }
 
-section #resposta{
-    height: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    justify-items: center;
+section #mensagem {
+    text-align: center;
 }
 
-section #resposta #browserGame {
+section #mensagem .error_message {
+    color: red;
+}
+
+section #mensagem .good {
+    color: #34C759;
+}
+
+section article {
+    text-align: center;
     display: flex;
-    flex-direction: row;
     justify-content: flex-start;
+    flex-direction: column;
     align-items: center;
-    margin: 24px;
+    box-shadow: 0px 10px 5px lightgray;
+    margin: 48px;
+    border-radius: 15px;
+    height: 75%;
 }
 
-section #resposta #browserGame #imagem {
-    width: 300px;
-    height: 300px;
-    margin: 16px;
+section article h2 {
+    margin-bottom: 10%;
 }
 
-section #resposta #browserGame #imagem img {
-    border-radius: 20px;
-    height: 100%;
+section article form {
     width: 100%;
-    object-fit: fill;
-    
+    text-align: center;
 }
 
-section #resposta #browserGame #informacao {
-    margin: 16px;
-    width: 50%;
-}
-
-section #resposta #browserGame #informacao #nome {
-    margin-bottom: 0px;
-    font-size: x-large;
-}
-
-section #resposta #browserGame #informacao #categoria {
-    margin-top: 0px;
-    color: var(--lilas);
-}
-
-section #resposta #browserGame #informacao #descricao {
-    text-align: justify;
-    text-justify: inter-word;
-}
-
-section #resposta #browserGame #informacao #botoes {
-    height: 20%;
+section article form div .side-by-side {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     flex-direction: row;
-    justify-content: flex-start;
 }
 
-section #resposta #browserGame #informacao #botoes input[type=button] {
-    height: 30%;
-    width: 80px;
+section article form label input {
+    margin: 10px;
+    height: 60px;
+    width: 20%;
+    font-size: xx-large;
+}
+
+section article form #avaliacao {
+    height: 100px;
+    width: 60.5%;
+    background-color: var(--bgColor);
+    padding: 10px;
+    border: 0 none;
+    outline: none;
+    margin-bottom: 10px;
+    border: var(--azulEscuro) solid 3px;
+    font-size: large;
+}
+
+section article form #imagem {
+    width: 60.5%;
+}
+
+
+section article form input[type=button] {
+    width: 15%;
+    height: 15%;
     color: var(--azulEscuro);
     background-color: var(--azul);
     border-radius: 10px;
@@ -141,15 +149,12 @@ section #resposta #browserGame #informacao #botoes input[type=button] {
     padding: 10px;
     outline: none;
     cursor: pointer;
-    margin: 0px 8px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-section #resposta #browserGame #informacao #botoes input[type=button] a {
-    text-decoration: none;
-}
-
-section #resposta #browserGame #informacao #botoes #avaliar {
-    background-color: #D475B3;
+section article form #cancelButton {
+    background-color: var(--lilas);
 }
 
 footer {

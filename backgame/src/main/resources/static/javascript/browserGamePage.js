@@ -24,6 +24,7 @@ function getBrowserGame(){
                     <h3 id='categoria'>categoria</h3>
                     <p id='descricao'>${descricao}</p>
                     <div id='botoes'>
+                        <input type='button' id="avaliar" value='Avaliar' onclick='goToAvaliar()'>
                         <a href="${url}" target="_blank"><input type='button' value='Jogar'></a>
                         <a href="${urlvideo}" target="_blank"><input type='button' value='Vídeo'></a>
                         <input type='button' value='Atualizar'  onclick='goToUpdate()'>
@@ -48,6 +49,10 @@ function getNameCategoria(id) {
 
 function goToUpdate() {
     window.location = "updateGame.html";
+}
+
+function goToAvaliar() {
+    window.location = "avaliarGame.html";
 }
 
 function deleteGame(id) {
