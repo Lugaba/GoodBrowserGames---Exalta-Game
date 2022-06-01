@@ -1,5 +1,6 @@
 package br.exaltagame.backgame.controller;
 
+import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +43,16 @@ public class MembroGameAvaliacaoController {
     @RequestMapping(value = "/membrosGamesAvaliacoes", method = RequestMethod.GET)
     public List<MembroGameAvaliacao> getAll() {
         return repository.findAll();
+    }
+
+    @RequestMapping(value = "/membrosGamesAvaliacoes/{gameId}", method = RequestMethod.GET)
+    public ResponseEntity<List<MembroGameAvaliacao>> getByGame(@PathVariable(value = "gameId") Long gameId) {
+        Optional<List<MembroGameAvaliacao>> response = repository.findByBrowserGameId(gameId);
+        if (response.isPresent()) {
+            return new ResponseEntity<List<MembroGameAvaliacao>>(response.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @RequestMapping(value = "/membrosGamesAvaliacoes/{membroId}/{gameId}/{avaliacaoId}", method = RequestMethod.POST)

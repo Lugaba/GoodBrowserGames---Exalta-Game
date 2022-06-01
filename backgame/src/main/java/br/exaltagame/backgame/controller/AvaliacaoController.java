@@ -62,6 +62,17 @@ public class AvaliacaoController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @RequestMapping(value = "/avaliacoes/like/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Avaliacao> Put(@PathVariable(value = "id") long id) {
+        Optional<Avaliacao> oldAvaliacao = repository.findById(id);
+        if (oldAvaliacao.isPresent()) {
+            oldAvaliacao.get().setLikes(oldAvaliacao.get().getLikes() + 1);
+            repository.save(oldAvaliacao.get());
+            return new ResponseEntity<Avaliacao>(oldAvaliacao.get(), HttpStatus.OK);
+        } else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     @RequestMapping(value = "/avaliacoes/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Object> Delete(@PathVariable(value = "id") long id) {
         Optional<Avaliacao> avaliacao = repository.findById(id);

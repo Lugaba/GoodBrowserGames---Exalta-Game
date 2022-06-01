@@ -14,25 +14,51 @@ function getBrowserGame(){
         var descricao = response.descricao;
         var url = response.url;
         var urlvideo = response.urlvideo
-        document.getElementById("resposta").innerHTML = 
-            `<div id='browserGame'>
-                <div id='imagem'>
-                    <img src='${img}'>
-                </div>
-                <div id='informacao'>
-                    <h1 id='nome'>${nome}</h1>
-                    <h3 id='categoria'>categoria</h3>
-                    <p id='descricao'>${descricao}</p>
-                    <div id='botoes'>
-                        <input type='button' id="avaliar" value='Avaliar' onclick='goToAvaliar()'>
-                        <a href="${url}" target="_blank"><input type='button' value='Jogar'></a>
-                        <a href="${urlvideo}" target="_blank"><input type='button' value='Vídeo'></a>
-                        <input type='button' value='Atualizar'  onclick='goToUpdate()'>
-                        <input type='button' value='Deletar' onclick='deleteGame(${save})'>
-                    </div>
+        document.getElementById("browserGame").innerHTML = 
+            `<div id='imagem'>
+                <img src='${img}'>
+            </div>
+            <div id='informacao'>
+                <h1 id='nome'>${nome}</h1>
+                <h3 id='categoria'>categoria</h3>
+                <p id='descricao'>${descricao}</p>
+                <div id='botoes'>
+                    <input type='button' id="avaliar" value='Avaliar' onclick='goToAvaliar()'>
+                    <a href="${url}" target="_blank"><input type='button' value='Jogar'></a>
+                    <a href="${urlvideo}" target="_blank"><input type='button' value='Vídeo'></a>
+                    <input type='button' value='Atualizar'  onclick='goToUpdate()'>
+                    <input type='button' value='Deletar' onclick='deleteGame(${save})'>
                 </div>
             </div>`;
-        getNameCategoria(categoriaId);  
+        getNameCategoria(categoriaId);
+    });
+
+    apiService.getById('/membrosGamesAvaliacoes', save, function(status, response) {
+        if(status < 200 || status > 299 ) {
+            document.getElementById("mensagem").innerHTML += "<p class='error_message'>Erro ao carregar os dados: " + status + " - " + json.message + "</p>";
+            return;
+        }
+
+        html = ""
+        for(var j=0; j<response.length; j++) {
+            var avaliacao = response[j]
+            var myDate = new Date(avaliacao.avaliacao.data);
+            var final_date = myDate.getDate()+"-"+(myDate.getMonth()+1)+"-"+myDate.getFullYear();
+            html += 
+            `<div id='avaliacao'>
+                <div id='cabecalho'>
+                    <p id='data'>${final_date}</p>
+                    <p id='userName'>${avaliacao.membro.username}</p>
+                </div>
+                <textarea cols='60' rows='8' id='textoAva'>${avaliacao.avaliacao.texto}</textarea>
+                <p id='nota'>Nota: ${avaliacao.avaliacao.estrelas}</p>
+                <div id="util">
+                    <input type='button' id='utilB' value='Útil' onclick='marcarUtil(${avaliacao.avaliacao.id})'>
+                    <p>${avaliacao.avaliacao.likes}</p>
+                </div>
+            </div>`;
+        }
+        document.getElementById("avaliacoes").innerHTML += html
     });
 };
 
@@ -67,3 +93,14 @@ function deleteGame(id) {
         });
     }
 };
+
+function marcarUtil(id) {
+    apiService.updateData("/avaliacoes/like", id, "", function(status, dados) {
+        if(status < 200 || status > 299 ) {
+            document.getElementById("mensagem").innerHTML += "<p class='error_message'>Erro ao atualizar os dados: " + status + " - " + dados.message + "</p>";
+            return;
+        }
+
+        window.location.reload()
+    });
+}
