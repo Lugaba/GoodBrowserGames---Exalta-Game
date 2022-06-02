@@ -1,7 +1,6 @@
 const apiService = new APIService();
 var userId = sessionStorage.getItem("user");
 
-console.log(`oi ${userId}`)
 function getAllGames(){
     if (userId != null) {
         apiService.getAll("/categorias", function(status, response){
@@ -47,9 +46,8 @@ function searchGames(gameName){
                 return;
             }
 
-            
+            var html = "<div id='browserGamesSearch'>"
             for(var i=0; i<response.length; i++){
-                var html = "<div class='browserGames'>" ;
                     let browserGame = response[i];
                     html += `
                     <a href="browserGame.html" onclick= "saveGame(${browserGame.id})">
@@ -59,7 +57,7 @@ function searchGames(gameName){
                         </div>
                     </a>`;
                 }
-                html += "</div></div>";
+                html += "</div>";
                 document.getElementById('resposta').innerHTML = html;
         });
     } else {

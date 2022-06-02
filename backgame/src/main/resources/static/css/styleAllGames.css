@@ -101,34 +101,41 @@ section #resposta .categoria .browserGames a {
     text-decoration: none;
 }
 
-section #resposta .categoria .browserGames .browserGame {
+.browserGame {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     margin: 0 15px;
 }
 
-section #resposta .categoria .browserGames .browserGame .imagem {
+.browserGame .imagem {
     width: 250px;
     height: 300px;
 }
 
-section #resposta .categoria .browserGames .browserGame .imagem img {
+.browserGame .imagem img {
     border-radius: 20px;
     height: 100%;
     width: 100%;
     object-fit: fill;
 }
 
-section #resposta .categoria .browserGames .browserGame #nome {
+.browserGame #nome {
     color: var(--azulEscuro);
     margin-bottom: 0px;
     font-size: large;
 }
 
-section #resposta .categoria .browserGames .browserGame #categoria {
+.browserGame #categoria {
     color: var(--lilas);
     margin-top: 4px;
+}
+
+section #resposta .categoria #browserGamesSearch {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 footer {
