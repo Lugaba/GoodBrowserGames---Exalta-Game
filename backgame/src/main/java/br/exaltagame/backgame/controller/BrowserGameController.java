@@ -55,6 +55,16 @@ public class BrowserGameController {
         }
     }
 
+    @RequestMapping(value = "/browsergames/search/{gameName}", method = RequestMethod.GET)
+    public ResponseEntity<List<BrowserGame>> getByName(@PathVariable(value = "gameName") String gameName) {
+        Optional<List<BrowserGame>> response = repository.findByNomeContaining(gameName);
+        if (response.isPresent()) {
+            return new ResponseEntity<List<BrowserGame>>(response.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @RequestMapping(value = "/browsergames/{id}", method = RequestMethod.PUT)
     public ResponseEntity<BrowserGame> Put(@PathVariable(value = "id") long id,
             @Valid @RequestBody BrowserGame newGame) {

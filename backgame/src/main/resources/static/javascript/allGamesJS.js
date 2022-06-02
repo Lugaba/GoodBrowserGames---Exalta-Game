@@ -39,6 +39,34 @@ function getAllGames(){
     }
 };
 
+function searchGames(gameName){
+    if (userId != null) {
+        apiService.getById("/browsergames/search", gameName, function(status, response) {
+            if(status < 200 || status > 299 ) {
+                document.getElementById("resposta").innerHTML += "<p class='error_message'>Erro ao carregar os dados: " + status + " - " + response.message + "</p>";
+                return;
+            }
+
+            
+            for(var i=0; i<response.length; i++){
+                var html = "<div class='browserGames'>" ;
+                    let browserGame = response[i];
+                    html += `
+                    <a href="browserGame.html" onclick= "saveGame(${browserGame.id})">
+                        <div class='browserGame'>
+                                <div class='imagem'><img src="${browserGame.imagem}"/></div>
+                                <p id='nome'>${browserGame.nome}</p>
+                        </div>
+                    </a>`;
+                }
+                html += "</div></div>";
+                document.getElementById('resposta').innerHTML = html;
+        });
+    } else {
+        document.getElementById('resposta').innerHTML = "<p class='error_message'>Você precisa estar logado!</p>";;
+    }
+};
+
 function saveGame(id){
     sessionStorage.setItem("save", id);
 }
