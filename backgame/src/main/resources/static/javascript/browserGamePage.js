@@ -1,5 +1,7 @@
 var save = sessionStorage.getItem("save");
 var categoriaId = sessionStorage.getItem("categoria1");
+var userId = sessionStorage.getItem("user");
+
 const apiService = new APIService();
 
 function getBrowserGame(){
@@ -55,8 +57,11 @@ function getBrowserGame(){
                 <div id="util">
                     <input type='button' id='utilB' value='Útil' onclick='marcarUtil(${avaliacao.avaliacao.id})'>
                     <p>${avaliacao.avaliacao.likes}</p>
-                </div>
-            </div>`;
+                </div>`
+            if (avaliacao.membro.id == userId) {
+                html += `<input type='button' value='Editar'  onclick='saveAvaliacao(${avaliacao.avaliacao.id}); goToUpdateAvaliacao()'>`
+            }
+            html += `</div>`;
         }
         document.getElementById("avaliacoes").innerHTML += html
     });
@@ -77,8 +82,16 @@ function goToUpdate() {
     window.location = "updateGame.html";
 }
 
+function saveAvaliacao(id){
+    sessionStorage.setItem("avaliacaoId", id);
+}
+
 function goToAvaliar() {
     window.location = "avaliarGame.html";
+}
+
+function goToUpdateAvaliacao() {
+    window.location = "updateAvaliacao.html"
 }
 
 function deleteGame(id) {

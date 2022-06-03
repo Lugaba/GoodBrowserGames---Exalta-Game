@@ -3,11 +3,11 @@
         <meta charset="utf-8"/>
         <title>ExaltaGame</title>
         <script src="javascript/APIService.js"></script>
-        <script src="javascript/avaliarGameJS.js"></script>
+        <script src="javascript/updateAvaliacaoJS.js"></script>
         <link rel="stylesheet" href="css/styleAvaliarGame.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
+    <body onload="getAvaliacao()">
         <section>
             <nav>
                 <ul>
@@ -24,7 +24,7 @@
                     <label>Nota (0 a 5): <input type="number" id="estrelas" name="estrelas" value="4" min="0" max="5"></label>
                     <div class="side-by-side">
                         <input type="button" id="cancelButton" value="Cancelar" onclick="location.href = 'browserGame.html';">
-                        <input type="button" value="Cadastrar" onclick="addAvaliacao()">
+                        <input type="button" value="Confirmar" onclick="updateAvaliacao()">
                     </div>
                 </form>
             </article>
