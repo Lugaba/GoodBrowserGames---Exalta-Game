@@ -31,7 +31,7 @@ function getUser(){
                     </div>
                 </div>
                 <div id='botoes'>
-                    <a href="" target="_blank"><input type='button' value='Atualizar dados'></a>
+                    <a href="" target="_blank"><input type='button' value='Atualizar dados' onclick='window.location = "updateProfile.html"'></a>
                     <input type='button' value='Avaliações' onclick='goToUpdate()'>
                     <div id="side-by-side">
                     <input id="cancelButton" type='button' value='Sair' onclick='logOut()'>`
