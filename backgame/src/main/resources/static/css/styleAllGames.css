@@ -51,13 +51,41 @@ section nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content:space-around;
+    align-items: center
 }
 
 section nav ul li {
     padding: 20px;
     list-style-type: none;
+}
+
+#search {
+    background-color: var(--bgColor);
+    font-size: large;
+    padding: 10px;
+    border: 0 none;
+    outline: none;
+    margin-bottom: 10px;
+    border: var(--azulEscuro) solid 3px;
+}
+
+#searchButton {
+    height: 30px;
+}
+
+.navB {
+    width: 10%;
+    height: 40px;
+    color: var(--azulEscuro);
+    border-radius: 10px;
+    text-align: center;
+    border: 0 none;
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 section nav ul li a {
@@ -138,7 +166,7 @@ section #resposta .categoria #browserGamesSearch {
     flex-wrap: wrap;
 }
 
-section #resposta #avaliacoes {
+#avaliacoes {
     display: flex;
     flex-direction: row;
     justify-content: center;

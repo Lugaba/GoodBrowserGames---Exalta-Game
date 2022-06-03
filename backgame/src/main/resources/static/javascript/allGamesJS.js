@@ -82,7 +82,7 @@ function getTopAvaliacoes(){
                 var myDate = new Date(avaliacao.avaliacao.data);
                 var final_date = myDate.getDate()+"-"+(myDate.getMonth()+1)+"-"+myDate.getFullYear();
                 html += 
-                `<div id='avaliacoes>'<div id='avaliacao'>
+                `<div id='avaliacoes'><div id='avaliacao'>
                     <div id='cabecalho'>
                         <p id='data'>${final_date}</p>
                         <p id='userName'>${avaliacao.membro.username}</p>
@@ -99,6 +99,7 @@ function getTopAvaliacoes(){
                 html += `</div></div>`;
             }
             document.getElementById("resposta").innerHTML = html
+            console.log
         });
     } else {
         document.getElementById('resposta').innerHTML = "<p class='error_message'>Você precisa estar logado!</p>";;

@@ -130,7 +130,7 @@ section #resposta #browserGame #informacao #botoes {
 }
 
 section #resposta #browserGame #informacao #botoes input[type=button] {
-    height: 30%;
+    height: 50px;
     width: 80px;
     color: var(--azulEscuro);
     background-color: var(--azul);

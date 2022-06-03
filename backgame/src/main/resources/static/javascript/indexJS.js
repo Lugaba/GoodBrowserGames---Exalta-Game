@@ -15,6 +15,11 @@ function logUserIn() {
             }
 
             saveUser(response.id);
+            if (response.isEditor == true) {
+                saveRole(1)
+            } else {
+                saveRole(0)
+            }
             window.location = "allGames.html";
         });
     } else {
@@ -24,4 +29,8 @@ function logUserIn() {
 
 function saveUser(id){
     sessionStorage.setItem("user", id);
+}
+
+function saveRole(id){
+    sessionStorage.setItem("userRole", id);
 }

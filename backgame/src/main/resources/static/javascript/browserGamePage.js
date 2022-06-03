@@ -29,8 +29,11 @@ function getBrowserGame(){
                 <div id='botoes'>
                     <input type='button' id="avaliar" value='Avaliar' onclick='goToAvaliar()'>
                     <a href="${url}" target="_blank"><input type='button' value='Jogar'></a>
-                    <a href="${urlvideo}" target="_blank"><input type='button' value='Vídeo'></a>`
+                    <a href="${urlvideo}" target="_blank"><input type='button' value='Vídeo'></a>`;
+        console.log(userRole)
+
         if (userRole == 1) {
+            console.log("aoba")
             html +=  `
             <input type='button' value='Atualizar'  onclick='goToUpdate()'>
             <input type='button' value='Deletar' onclick='deleteGame(${save})'>`
