@@ -81,6 +81,7 @@ public class MembroController {
             membro.setPais(newMembro.getPais());
             membro.setSenha(newMembro.getSenha());
             membro.setUsername(newMembro.getUsername());
+            membro.setIsEditor(newMembro.getIsEditor());
             repository.save(membro);
             return new ResponseEntity<Membro>(membro, HttpStatus.OK);
         } else

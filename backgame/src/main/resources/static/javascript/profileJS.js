@@ -10,12 +10,14 @@ function getUser(){
                 return;
             }
 
+            var html = ""
             var nomeCompleto = response.nomeCompleto;
             var username = response.username;
             var dataNascimento = response.dataNascimento;
             var estado = response.estado;
             var pais = response.pais
-            document.getElementById("resposta").innerHTML = 
+            var isEditor = response.isEditor
+            html += 
                 `<div id='membro'>
                     <div id='imagem'>
                         <img src='imagens/iconePerfil.png'>
@@ -32,8 +34,18 @@ function getUser(){
                     <a href="" target="_blank"><input type='button' value='Trocar foto'></a>
                     <a href="" target="_blank"><input type='button' value='Atualizar dados'></a>
                     <input type='button' value='Avaliações' onclick='goToUpdate()'>
-                    <input id="cancelButton" type='button' value='Sair' onclick='logOut()'>
-                </div>`;
+                    <div id="side-by-side">
+                    <input id="cancelButton" type='button' value='Sair' onclick='logOut()'>`
+            if (isEditor == true) {
+                html +=  `
+                <input type='button' value='Adicionar Game' onclick='window.location = "adicionarGame.html"'>
+                <input type='button' value='Adicionar Categoria' onclick='window.location = "adicionarCategoria.html"'>
+                <input type='button' value='Obter Relatórios' onclick='goToUpdate()'>`
+            }   
+            html += `</div></div>`;
+
+            console.log(document.getElementById("resposta").innerHTML)
+            document.getElementById("resposta").innerHTML = html
         });
     } else {
         document.getElementById('resposta').innerHTML = "<p class='error_message'>Você precisa estar logado!</p>";;

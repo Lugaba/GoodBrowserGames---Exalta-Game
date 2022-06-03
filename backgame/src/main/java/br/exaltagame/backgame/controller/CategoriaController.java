@@ -28,8 +28,14 @@ public class CategoriaController {
     }
 
     @RequestMapping(value = "/categorias", method = RequestMethod.POST)
-    public Categoria createCategoria(@Valid @RequestBody Categoria categoria) {
-        return repository.save(categoria); // salva no banco
+    public ResponseEntity<Categoria> createCategoria(@Valid @RequestBody Categoria categoria) {
+        Optional<Categoria> response = repository.findByNome(categoria.getNome());
+        if (response.isPresent()) {
+            return new ResponseEntity<Categoria>(HttpStatus.CONFLICT);
+        } else {
+            repository.save(categoria);
+            return new ResponseEntity<Categoria>(categoria, HttpStatus.CREATED);
+        }
     }
 
     @RequestMapping(value = "/categorias/{id}", method = RequestMethod.GET)

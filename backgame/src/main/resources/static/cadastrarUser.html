@@ -24,12 +24,16 @@
                     <label>Nascimento: <input type="date" id="dataNascimento" name="dataNascimento" value="2018-07-22"></label>
                     <div class="side-by-side">
                         <input class="field" type="text" id="username" name="username" placeholder="Username" required>
-                        <input class="field" type="password" id="senha" name="senha" placeholder="Senha">
+                        <input class="field" type="password" id="senha" name="senha" placeholder="Senha" required>
                     </div>
                     <div class="side-by-side">
                         <input class="field" type="text" id="estado" name="estado" placeholder="Estado" required>
-                        <input class="field" type="text" id="pais" name="pais" placeholder="País">
+                        <input class="field" type="text" id="pais" name="pais" placeholder="País" required>
                     </div>
+                    <input type="radio" name="user_role" id="Leitor" value="Leitor" checked>
+                    <label for="Leitor">Leitor</label>
+                    <input type="radio" name="user_role" id="Administrador" value="Administrador">
+                    <label for="Administrador">Administrador</label>
                     <div class="side-by-side">
                         <input type="button" id="cancelButton" value="Cancelar" onclick="location.href = 'index.html';">
                         <input type="button" value="Cadastrar" onclick="addMembro()">

@@ -43,6 +43,9 @@ public class Membro {
     @Column(nullable = false) // Atributo nao pode ser null
     private String pais;
 
+    @Column(nullable = false)
+    private boolean isEditor;
+
     @OneToMany(mappedBy = "membro", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<MembroGameAvaliacao> membroGameAvaliacao;
@@ -109,5 +112,13 @@ public class Membro {
 
     public Set<MembroGameAvaliacao> getMembroGameAvaliacao() {
         return membroGameAvaliacao;
+    }
+
+    public boolean getIsEditor() {
+        return isEditor;
+    }
+
+    public void setIsEditor(boolean isEditor) {
+        this.isEditor = isEditor;
     }
 }

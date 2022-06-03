@@ -1,6 +1,7 @@
 var save = sessionStorage.getItem("save");
 var categoriaId = sessionStorage.getItem("categoria1");
 var userId = sessionStorage.getItem("user");
+var userRole = sessionStorage.getItem("userRole");
 
 const apiService = new APIService();
 
@@ -11,12 +12,13 @@ function getBrowserGame(){
             return;
         }
         
+        var html = ""
         var img = response.imagem;
         var nome = response.nome;
         var descricao = response.descricao;
         var url = response.url;
         var urlvideo = response.urlvideo
-        document.getElementById("browserGame").innerHTML = 
+        html += 
             `<div id='imagem'>
                 <img src='${img}'>
             </div>
@@ -27,12 +29,15 @@ function getBrowserGame(){
                 <div id='botoes'>
                     <input type='button' id="avaliar" value='Avaliar' onclick='goToAvaliar()'>
                     <a href="${url}" target="_blank"><input type='button' value='Jogar'></a>
-                    <a href="${urlvideo}" target="_blank"><input type='button' value='Vídeo'></a>
-                    <input type='button' value='Atualizar'  onclick='goToUpdate()'>
-                    <input type='button' value='Deletar' onclick='deleteGame(${save})'>
-                </div>
-            </div>`;
+                    <a href="${urlvideo}" target="_blank"><input type='button' value='Vídeo'></a>`
+        if (userRole == 1) {
+            html +=  `
+            <input type='button' value='Atualizar'  onclick='goToUpdate()'>
+            <input type='button' value='Deletar' onclick='deleteGame(${save})'>`
+        }   
+        html += `</div></div>`;
         getNameCategoria(categoriaId);
+        document.getElementById("browserGame").innerHTML = html
     });
 
     apiService.getById('/membrosGamesAvaliacoes', save, function(status, response) {

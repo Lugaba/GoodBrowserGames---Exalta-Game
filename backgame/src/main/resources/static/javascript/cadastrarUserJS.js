@@ -6,13 +6,23 @@ function addMembro() {
       (document.getElementById('senha').value.trim() != '') &&
      (document.getElementById('estado').value.trim() != '') &&
      (document.getElementById('pais').value.trim() != '')) {
+
+        var isEditorValue = document.querySelector('input[name="user_role"]:checked').value;
+        var isEditor = false
+        if (isEditorValue == "Administrador") {
+            isEditor = true
+        }
+
+        console.log(isEditor)
+
          var membro = {
             "nomeCompleto": document.getElementById('nomeCompleto').value.trim(),
             "username": document.getElementById('username').value.trim(),
             "senha": document.getElementById('senha').value.trim(),
             "dataNascimento": document.getElementById('dataNascimento').value,
             "estado": document.getElementById('estado').value.trim(),
-            "pais": document.getElementById('pais').value.trim()
+            "pais": document.getElementById('pais').value.trim(),
+            "isEditor": isEditor
          }
 
          apiService.create("/membros", membro, function (status, dados) {
@@ -30,6 +40,13 @@ function addMembro() {
             document.getElementById('pais').value = '';
 
             saveUser(dados.id);
+
+            if (isEditor == true) {
+                saveRole(1)
+            } else {
+                saveRole(0)
+            }
+            
             
             window.location = "allGames.html";
 
@@ -41,4 +58,8 @@ function addMembro() {
 
 function saveUser(id){
     sessionStorage.setItem("user", id);
+}
+
+function saveRole(id){
+    sessionStorage.setItem("userRole", id);
 }
